@@ -5,6 +5,7 @@ using namespace std;
 
 string randomWord ();
 bool checkResult (char , string , string &, int );
+void printResult (string, int);
 void hangMan ();
 
 const int max_wrong_guess=7;
@@ -35,6 +36,64 @@ const string WORD_LIST[] = {
     "wall", "watch", "wheel", "whip", "whistle", "window", "wire", "wing", "worm",
 };
 const int word_count = sizeof(WORD_LIST)/sizeof(string);
+const string FIGURE[] = {
+    " ------------- \n"
+    " | \n"
+    " | \n"
+    " | \n"
+    " | \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " | \n"
+    " | \n"
+    " | \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " |           O \n"
+    " | \n"
+    " | \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " |           O \n"
+    " |           | \n"
+    " | \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " |           O \n"
+    " |          /| \n"
+    " | \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " |           O \n"
+    " |          /|\\ \n"
+    " | \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " |           O \n"
+    " |          /|\\ \n"
+    " |          / \n"
+    " | \n"
+    " ----- \n",
+    " ------------- \n"
+    " |           | \n"
+    " |           O \n"
+    " |          /|\\ \n"
+    " |          / \\ \n"
+    " | \n"
+    " ----- \n",
+};
 
 int main (){
     srand(time(0));
@@ -53,17 +112,15 @@ void hangMan (){
     int wordLength = (int)word.length();
     int wrongGuess = 0;
     string result(wordLength, '_');
-    cout << result<<endl;
     while (wrongGuess<max_wrong_guess&&word!=result){
+        printResult(result, wrongGuess);
         char guess;
         cin >> guess;
         if (!checkResult( guess, word, result, wordLength)){
-            cout << "Wrong guess"<<endl;
             wrongGuess++;
         }
-        cout << "Number of wrong guesses: "<<wrongGuess<<endl;
-        cout << result<<endl<<endl;
     }
+    printResult(result, wrongGuess);
     if (wrongGuess==7){
         cout <<"You lose!"<<endl;
     } else {
@@ -86,4 +143,10 @@ bool checkResult (char a, string s, string &result, int n){
         }
     }
     return correctChar;
+}
+
+void printResult (string result, int wrongGuess){
+    cout << FIGURE[wrongGuess]<<endl;
+    cout << "Number of wrong guesses: "<<wrongGuess<<endl;
+    cout << result<<endl<<endl;
 }
