@@ -1,9 +1,19 @@
 # ExersiceLTNC
- 1. simple-calculator
-   + calculator with simple functions: plus/minus/multiply/devide/remainder/square-root/sin/cos
-   + user interact with computer by terminal
- 2. Guess-it  
-  a. player play against computer with count and point system.  
-  b. computer play against player.
- 3. Hangman
-  + user guess hidden word, computer return result and render hangman
+ B:  
+  1.  
+   *p3 = B, p3 = 0x5678  
+   *p3 = A, p3 = 0x1234  
+   *p1 = B, p1 = 0x5678  
+  2.  
+   *p = 5;  
+  3.  
+   Lỗi kiểu không tương thích do trỏ con trỏ double(8 byte) đến 1 biến kiểu char(1 byte)  
+  
+ D:  
+  1.iv  
+  2.iii  
+  3.iii  
+  4.iii  
+  5.iv  
+  6.i  	
+  7.iii  
